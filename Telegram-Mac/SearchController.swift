@@ -427,6 +427,17 @@ private func peerContextMenuItems(peer: Peer, pinnedItems:[PinnedItemId], argume
     
     let peerId = peer.id
     
+    if peer.isHidden() {
+        items.append(ContextMenuItem(strings().chatListContextUnhideGeneral, handler: {
+            peer.unhide()
+        }, itemImage: MenuAnimation.menu_unmuted.value))
+    } else {
+        items.append(ContextMenuItem(strings().chatListContextHideGeneral, handler: {
+            peer.hide()
+        }, itemImage: MenuAnimation.menu_mute.value))
+    }
+
+    
     return .single(items) |> mapToSignal { items in
         return chatListFilterPreferences(engine: arguments.context.engine) |> deliverOnMainQueue |> take(1) |> map { filters -> [ContextMenuItem] in
             var items = items

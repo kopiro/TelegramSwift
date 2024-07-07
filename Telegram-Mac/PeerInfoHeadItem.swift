@@ -230,11 +230,21 @@ private func actionItems(item: PeerInfoHeadItem, width: CGFloat, theme: Telegram
                     }
                 }
             }
+            if peer.isHidden() {
+                items.append(ActionItem(text: strings().chatListContextUnhideGeneral, color: item.accentColor, image: theme.icons.chatActionUnmute, animation: .menu_unmuted, action: {
+                    peer.unhide()
+                }))
+            } else {
+                items.append(ActionItem(text: strings().chatListContextHideGeneral, color: item.accentColor, image: theme.icons.chatActionMute, animation: .menu_mute, action: {
+                    peer.hide()
+                }))
+            }
             if peer.id != item.context.peerId, let cachedData = item.peerView.cachedData as? CachedUserData, item.peerView.peerIsContact {
                 items.append(ActionItem(text: (!cachedData.isBlocked ? strings().peerInfoBlockUser : strings().peerInfoUnblockUser), color: item.accentColor, image: !cachedData.isBlocked ? theme.icons.profile_block : theme.icons.profile_unblock, animation: cachedData.isBlocked ? .menu_unblock : .menu_restrict, destruct: true, action: {
                     arguments.updateBlocked(peer: peer, !cachedData.isBlocked, false)
                 }))
             }
+            
         } else if let botInfo = peer.botInfo {
             
             if let address = peer.addressName, !address.isEmpty {

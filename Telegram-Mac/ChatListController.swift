@@ -829,6 +829,12 @@ class ChatListController : PeersListController {
             var mapped: [UIChatListEntry] = prepare.map { item in
                 let space: PeerActivitySpace
                 var generalStatus: ItemHideStatus? = nil
+                
+                let peerId = item.0.renderedPeer.peerId
+                if item.0.renderedPeer.peer?._asPeer().isHidden() == true {
+                    generalStatus = .hidden(true)
+                }
+                
                 switch item.0.id {
                 case let .forum(threadId):
                     space = .init(peerId: item.0.renderedPeer.peerId, category: .thread(threadId))

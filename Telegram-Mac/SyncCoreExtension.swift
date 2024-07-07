@@ -68,6 +68,21 @@ extension Peer {
         }
         return false
     }
+
+    func isHidden() -> Bool {
+        let peerID = self.id
+        return UserDefaults.standard.bool(forKey: "HiddenPeer:\(peerID)")
+    }
+    
+    func hide() {
+        let peerID = self.id
+        UserDefaults.standard.setValue(true, forKey: "HiddenPeer:\(peerID)")
+    }
+    
+    func unhide() {
+        let peerID = self.id
+        UserDefaults.standard.removeObject(forKey: "HiddenPeer:\(peerID)")
+    }
     
     var storyArchived: Bool {
         if let user = self as? TelegramUser {

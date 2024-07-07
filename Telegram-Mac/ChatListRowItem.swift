@@ -1880,6 +1880,17 @@ class ChatListRowItem: TableRowItem {
                      
                     
                     firstGroup.append(muteItem)
+                    
+                    let _peer = peer._asPeer()
+                    if _peer.isHidden() {
+                        firstGroup.append(ContextMenuItem(strings().chatListContextUnhideGeneral, handler: {
+                            _peer.unhide()
+                        }, itemImage: MenuAnimation.menu_unmuted.value))
+                    } else {
+                        firstGroup.append(ContextMenuItem(strings().chatListContextHideGeneral, handler: {
+                            _peer.hide()
+                        }, itemImage: MenuAnimation.menu_mute.value))
+                    }
                 }
                 
                 if mainPeer is TelegramUser, !mode.savedMessages {
