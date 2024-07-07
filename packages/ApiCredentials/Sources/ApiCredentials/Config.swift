@@ -9,7 +9,7 @@ public final class ApiEnvironment {
     }
     
     public static var bundleId: String {
-        return "ru.keepcoder.Telegram"
+        return "com.kopiro.Telegram"
     }
     public static var intentsBundleId: String {
         return teamId + "." + bundleId + ".FocusIntents"

@@ -8,9 +8,9 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>6N38VWS5BX.ru.keepcoder.Telegram</string>
-		<string>6N38VWS5BX.ru.keepcoder.Telegram.TelegramShare</string>
-		<string>6N38VWS5BX.ru.keepcoder.Telegram.FocusIntents</string>
+		<string>6N38VWS5BX.com.kopiro.Telegram</string>
+		<string>6N38VWS5BX.com.kopiro.Telegram.TelegramShare</string>
+		<string>6N38VWS5BX.com.kopiro.Telegram.FocusIntents</string>
 	</array>
 	<key>com.apple.security.device.audio-input</key>
 	<true/>
@@ -28,8 +28,8 @@
 	<true/>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>6N38VWS5BX.ru.keepcoder.Telegram</string>
-		<string>6N38VWS5BX.ru.keepcoder.TelegramShare</string>
+		<string>6N38VWS5BX.com.kopiro.Telegram</string>
+		<string>6N38VWS5BX.com.kopiro.TelegramShare</string>
 	</array>
 </dict>
 </plist>
